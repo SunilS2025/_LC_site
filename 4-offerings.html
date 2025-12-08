@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulting Services | Launch Copilot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        :root {
+            --sky-blue: #0EA5E9; --sky-blue-light: #7DD3FC; --sky-pale: #E0F2FE;
+            --navy: #1E3A8A; --navy-dark: #1E293B;
+            --gold: #F59E0B; --gold-light: #FCD34D;
+            --white: #FFFFFF; --text-primary: #1E293B; --text-secondary: #64748B;
+            --background: #F8FAFC; --border: #E2E8F0;
+        }
+        body {font-family: 'Inter', sans-serif; line-height: 1.7; color: var(--text-primary); background: var(--white); scroll-behavior: smooth;}
+        
+        /* Header */
+        header {background: var(--white); padding: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 3px solid transparent; border-image: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%) 1;}
+        nav {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: flex; justify-content: space-between; align-items: center;}
+        .logo {font-size: 1.5rem; font-weight: 700; color: var(--navy-dark); display: flex; align-items: center; gap: 0.7rem; text-decoration: none;}
+        .logo img {height: 55px; width: auto;}
+        nav > ul {list-style: none; display: flex; gap: 2.5rem;}
+        nav a {color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; position: relative; font-size: 0.95rem;}
+        nav a:hover {color: var(--sky-blue);}
+        nav a.active {color: var(--navy); font-weight: 700;}
+        nav a.active::after {content: ''; position: absolute; bottom: -1.5rem; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%);}
+        
+        /* Mobile menu */
+        .mobile-menu-btn {display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--navy);}
+        
+        /* Hero */
+        .hero {background: linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-blue-light) 50%, var(--sky-pale) 100%); padding: 6rem 2.5rem 5rem; position: relative;}
+        .hero-content {max-width: 1320px; margin: 0 auto;}
+        .hero-label {display: inline-block; padding: 0.6rem 1.2rem; background: var(--white); color: var(--navy); border-radius: 30px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; border: 2px solid var(--gold);}
+        .hero h1 {font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800; color: var(--navy-dark); letter-spacing: -0.03em; line-height: 1.15;}
+        .hero h1 .highlight {background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
+        .hero-subtitle {font-size: 1.5rem; color: var(--text-secondary); max-width: 900px; line-height: 1.6; margin-bottom: 2rem;}
+        
+        /* Containers and Sections */
+        .container {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem;}
+        section {padding: 6rem 0;}
+        .section-header {text-align: center; margin-bottom: 4rem;}
+        .section-label {display: inline-block; padding: 0.6rem 1.3rem; background: linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-blue-light) 100%); color: var(--navy); border-radius: 25px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem; border: 1px solid var(--sky-blue);}
+        h2 {font-size: 2.8rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 1.2rem; letter-spacing: -0.025em; line-height: 1.2;}
+        h2 .gold-highlight {color: var(--gold);}
+        .section-description {font-size: 1.25rem; color: var(--text-secondary); max-width: 900px; margin: 0 auto; line-height: 1.7;}
+
+        /* Framework Section */
+        .framework-section {background: linear-gradient(180deg, var(--white) 0%, var(--background) 100%); padding: 5rem 0;}
+        .framework-visual {max-width: 1000px; margin: 0 auto; text-align: center;}
+        .framework-visual img {width: 100%; max-width: 950px; height: auto; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.1);}
+        .framework-intro {max-width: 900px; margin: 0 auto 3rem; text-align: center;}
+        .framework-intro p {font-size: 1.2rem; line-height: 1.8; color: var(--text-primary);}
+
+        /* Anchor Question Box */
+        .anchor-question {background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%); padding: 3rem 4rem; border-radius: 20px; margin: 3rem auto 4rem; max-width: 900px; text-align: center; box-shadow: 0 12px 40px rgba(30, 58, 138, 0.3); position: relative; overflow: hidden;}
+        .anchor-question::before {content: ''; position: absolute; top: -50%; right: -20%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, transparent 70%); animation: pulse 4s ease-in-out infinite;}
+        .anchor-question::after {content: ''; position: absolute; bottom: -50%; left: -20%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%); animation: pulse 4s ease-in-out infinite 2s;}
+        @keyframes pulse {0%, 100% {transform: scale(1); opacity: 1;} 50% {transform: scale(1.1); opacity: 0.8;}}
+        .anchor-question .content {position: relative; z-index: 1;}
+        .anchor-question h3 {font-size: 2.2rem; font-weight: 800; color: var(--white); margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.2);}
+        .anchor-question p {font-size: 1.2rem; line-height: 1.7; color: rgba(255, 255, 255, 0.9);}
+
+        /* Role Navigation Tabs */
+        .role-tabs {display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;}
+        .role-tab {padding: 1rem 2rem; background: var(--white); border: 2px solid var(--border); border-radius: 12px; font-weight: 600; font-size: 1rem; color: var(--text-secondary); cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 0.75rem;}
+        .role-tab:hover {border-color: var(--sky-blue); color: var(--sky-blue); transform: translateY(-2px);}
+        .role-tab.active {background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%); color: var(--white); border-color: transparent; box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);}
+        .role-tab .icon {font-size: 1.4rem;}
+
+        /* Role Content Sections */
+        .role-content {display: none; animation: fadeIn 0.4s ease-out;}
+        .role-content.active {display: block;}
+        @keyframes fadeIn {from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);}}
+
+        .role-header {background: linear-gradient(135deg, var(--sky-pale) 0%, rgba(245, 158, 11, 0.1) 100%); padding: 2.5rem 3rem; border-radius: 16px; margin-bottom: 3rem; border-left: 5px solid var(--gold);}
+        .role-header h3 {font-size: 1.8rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.75rem;}
+        .role-header .tagline {font-size: 1.2rem; color: var(--sky-blue); font-weight: 600; font-style: italic; margin-bottom: 1rem;}
+        .role-header p {font-size: 1.1rem; color: var(--text-secondary); line-height: 1.7;}
+
+        /* Offering Cards */
+        .offerings-grid {display: grid; gap: 2rem;}
+        .offering-card {background: var(--white); border: 2px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.3s;}
+        .offering-card:hover {border-color: var(--sky-blue); box-shadow: 0 12px 40px rgba(14, 165, 233, 0.12); transform: translateY(-3px);}
+        .offering-card.featured {border: 3px solid var(--gold); position: relative;}
+        .offering-card.featured::before {content: 'Recommended Starting Point'; position: absolute; top: 0; right: 0; background: var(--gold); color: var(--white); font-size: 0.75rem; font-weight: 700; padding: 0.4rem 1rem; border-radius: 0 14px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;}
+        
+        .offering-header {padding: 2rem 2.5rem; background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); border-bottom: 1px solid var(--border);}
+        .offering-number {display: inline-block; width: 36px; height: 36px; background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%); color: var(--white); border-radius: 50%; font-weight: 700; font-size: 1rem; line-height: 36px; text-align: center; margin-bottom: 1rem;}
+        .offering-header h4 {font-size: 1.4rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.5rem;}
+        .offering-header .subtitle {font-size: 1rem; color: var(--sky-blue); font-weight: 600;}
+        
+        .offering-body {padding: 2rem 2.5rem;}
+        .offering-body p {font-size: 1.05rem; color: var(--text-primary); line-height: 1.7; margin-bottom: 1.5rem;}
+        
+        .deliverables-label {font-size: 0.85rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;}
+        .deliverables-list {list-style: none; display: grid; gap: 0.6rem;}
+        .deliverables-list li {font-size: 0.95rem; color: var(--text-secondary); padding-left: 1.5rem; position: relative; line-height: 1.6;}
+        .deliverables-list li::before {content: '✓'; position: absolute; left: 0; color: var(--sky-blue); font-weight: 700;}
+
+        /* Journey Arrow */
+        .journey-arrow {display: flex; align-items: center; justify-content: center; padding: 1.5rem 0;}
+        .journey-arrow svg {width: 40px; height: 40px; color: var(--gold);}
+        .journey-arrow span {font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); margin-left: 0.5rem;}
+
+        /* How We Work Section */
+        .how-we-work {background: var(--white); padding: 5rem 0; border-top: 1px solid var(--border);}
+        .work-grid {display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem;}
+        .work-card {text-align: center; padding: 2rem 1.5rem;}
+        .work-icon {width: 70px; height: 70px; background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1.5rem; color: var(--white); box-shadow: 0 6px 20px rgba(14, 165, 233, 0.25);}
+        .work-card h4 {font-size: 1.15rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.75rem;}
+        .work-card p {font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;}
+
+        /* Consulting Model Callout */
+        .consulting-callout {background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); border: 2px solid var(--border); border-radius: 16px; padding: 3rem; margin-top: 3rem; display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center;}
+        .callout-icon {width: 100px; height: 100px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto; box-shadow: 0 8px 25px rgba(245, 158, 11, 0.25);}
+        .callout-content h3 {font-size: 1.5rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 1rem;}
+        .callout-content p {font-size: 1.1rem; color: var(--text-secondary); line-height: 1.7;}
+
+        /* CTA Section */
+        .cta-section {background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%); padding: 5rem 2.5rem; text-align: center; position: relative; overflow: hidden;}
+        .cta-section::before {content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.03)"/><circle cx="40" cy="80" r="2.5" fill="rgba(255,255,255,0.04)"/></svg>'); pointer-events: none;}
+        .cta-content {max-width: 800px; margin: 0 auto; position: relative; z-index: 1;}
+        .cta-content h2 {font-size: 2.5rem; color: var(--white); margin-bottom: 1.2rem;}
+        .cta-content p {font-size: 1.25rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 2.5rem; line-height: 1.7;}
+        .cta-buttons {display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;}
+        .btn {padding: 1rem 2rem; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;}
+        .btn-primary {background: var(--gold); color: var(--navy-dark); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);}
+        .btn-primary:hover {background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(245, 158, 11, 0.45);}
+        .btn-secondary {background: transparent; color: var(--white); border: 2px solid rgba(255, 255, 255, 0.3);}
+        .btn-secondary:hover {border-color: var(--white); background: rgba(255, 255, 255, 0.1);}
+
+        /* Footer */
+        footer {background: var(--navy-dark); color: rgba(255, 255, 255, 0.8); padding: 4rem 0 2rem;}
+        .footer-content {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 4rem; margin-bottom: 3rem;}
+        .footer-logo {display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.5rem;}
+        .footer-logo img {height: 40px; width: auto;}
+        .footer-logo span {font-size: 1.3rem; font-weight: 700; color: var(--white);}
+        .footer-tagline {font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); font-weight: 500; margin-top: 0.5rem; margin-bottom: 1.5rem; letter-spacing: 0.05em;}
+        .footer-description {line-height: 1.7; font-size: 0.95rem; color: rgba(255, 255, 255, 0.7);}
+        .footer-section h4 {color: var(--white); font-weight: 700; margin-bottom: 1.5rem; font-size: 1.1rem;}
+        .footer-links {list-style: none;}
+        .footer-links li {margin-bottom: 0.8rem;}
+        .footer-links a {color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.3s; font-size: 0.95rem;}
+        .footer-links a:hover {color: var(--sky-blue);}
+        .footer-bottom {max-width: 1320px; margin: 0 auto; padding: 2rem 2.5rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6);}
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .work-grid {grid-template-columns: repeat(2, 1fr);}
+            .consulting-callout {grid-template-columns: 1fr;}
+            .footer-content {grid-template-columns: repeat(2, 1fr);}
+        }
+        @media (max-width: 768px) {
+            .mobile-menu-btn {display: block;}
+            nav > ul {position: fixed; top: 80px; right: -100%; width: 280px; height: calc(100vh - 80px); background: var(--white); flex-direction: column; padding: 2rem; box-shadow: -2px 0 10px rgba(0,0,0,0.1); transition: right 0.3s ease; gap: 1.5rem; align-items: flex-start;}
+            nav > ul.mobile-menu-open {right: 0;}
+            .hero h1 {font-size: 2.5rem;}
+            h2 {font-size: 2rem;}
+            .role-tabs {flex-direction: column; align-items: center;}
+            .role-tab {width: 100%; max-width: 320px; justify-content: center;}
+            .work-grid {grid-template-columns: 1fr;}
+            .anchor-question {padding: 2rem;}
+            .anchor-question h3 {font-size: 1.6rem;}
+            .footer-content {grid-template-columns: 1fr;}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="25_11_13__LC_logo-Transp.png" alt="Launch Copilot">
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            <ul>
+                <li><a href="index.html">Why Launch Copilot</a></li>
+                <li><a href="tillDec%2007/2-how-it-works.html">How It Works</a></li>
+                <li><a href="4-offerings.html" class="active">Consulting Services</a></li>
+                <li><a href="tillDec%2007/3-request-demo.html">Request Demo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-label">Consulting Services</div>
+            <h1>Launch Excellence, <span class="highlight">Delivered</span></h1>
+            <p class="hero-subtitle">Strategic consulting powered by Launch Copilot—helping pharmaceutical teams prepare, execute, and excel through every stage of the launch journey.</p>
+        </div>
+    </section>
+
+    <section class="framework-section">
+        <div class="container">
+            <div class="framework-intro">
+                <p>Every engagement is anchored in Clariem's <strong>Launch Excellence Framework</strong>—a proven methodology spanning Insight through Impact, designed to bring predictability and discipline to the most complex pharmaceutical launches.</p>
+            </div>
+            
+            <div class="framework-visual">
+                <img src="2025_12_CL_LEX_Framework_Trans.png" alt="Launch Excellence Framework - Insight, Ambition, Readiness, Activation, Impact">
+            </div>
+
+            <div class="anchor-question">
+                <div class="content">
+                    <h3>"What matters to you right now?"</h3>
+                    <p>This is where every conversation starts. Whether you're assessing readiness, building capabilities, or preparing for a leadership review—we meet you where you are and design the right path forward.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offerings-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Tailored to Your Role</span>
+                <h2>How We <span class="gold-highlight">Partner With You</span></h2>
+                <p class="section-description">Different roles face different challenges. Select your perspective to see how we can help.</p>
+            </div>
+
+            <div class="role-tabs">
+                <div class="role-tab active" onclick="showRole(0)">
+                    <span class="icon">📊</span>
+                    <span>Brand & Launch Leads</span>
+                </div>
+                <div class="role-tab" onclick="showRole(1)">
+                    <span class="icon">🎯</span>
+                    <span>Launch Excellence & COE</span>
+                </div>
+                <div class="role-tab" onclick="showRole(2)">
+                    <span class="icon">👔</span>
+                    <span>Executive Leadership</span>
+                </div>
+            </div>
+
+            <!-- Brand & Launch Leads Content -->
+            <div class="role-content active" id="role-0">
+                <div class="role-header">
+                    <h3>For Brand & Launch Leads</h3>
+                    <div class="tagline">Make your launch safer, smoother, and leadership-ready</div>
+                    <p>You're accountable for launch success—but are you confident you're on track? Our services help you assess your true readiness, pressure-test your plans, and present to leadership with confidence.</p>
+                </div>
+
+                <div class="offerings-grid">
+                    <div class="offering-card featured">
+                        <div class="offering-header">
+                            <div class="offering-number">1</div>
+                            <h4>Launch Readiness Assessment</h4>
+                            <div class="subtitle">Know exactly where you stand</div>
+                        </div>
+                        <div class="offering-body">
+                            <p>An objective, framework-based assessment of your launch readiness. We evaluate your current state against Clariem's 5-stage Launch Excellence Framework, scoring your position relative to where you should be at your stage on the launch clock.</p>
+                            <div class="deliverables-label">What You Get</div>
+                            <ul class="deliverables-list">
+                                <li>Readiness score benchmarked against launch clock expectations (L-12, L-6, etc.)</li>
+                                <li>Gap analysis across all critical dimensions—strategy, evidence, access, execution</li>
+                                <li>Prioritized action roadmap with clear owners and timelines</li>
+                                <li>Executive-ready summary for leadership updates</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="journey-arrow">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        <span>Build on your assessment</span>
+                    </div>
+
+                    <div class="offering-card">
+                        <div class="offering-header">
+                            <div class="offering-number">2</div>
+                            <h4>Launch Plan Development</h4>
+                            <div class="subtitle">From gaps to action-ready plans</div>
+                        </div>
+                        <div class="offering-body">
+                            <p>Working from your readiness assessment, we help you build or strengthen the launch materials that matter most. Our consultants leverage proven templates and AI-accelerated development to produce high-quality deliverables efficiently.</p>
+                            <div class="deliverables-label">What You Get</div>
+                            <ul class="deliverables-list">
+                                <li>Strategic launch plans aligned to your framework stage</li>
+                                <li>Critical path deliverables built from proven templates</li>
+                                <li>Cross-functional alignment documents and RACI matrices</li>
+                                <li>Milestone calendars and dependency maps</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="journey-arrow">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        <span>Stress-test before you present</span>
+                    </div>
+
+                    <div class="offering-card">
+                        <div class="offering-header">
+                            <div class="offering-number">3</div>
+                            <h4>Pressure Test & Review Prep</h4>
+                            <div class="subtitle">Be ready for the hard questions</div>
+                        </div>
+                        <div class="offering-body">
+                            <p>Before your leadership review, we challenge your plans the way executives will—identifying gaps, stress-testing assumptions, and preparing your team to answer confidently. You'll walk in prepared, not surprised.</p>
+                            <div class="deliverables-label">What You Get</div>
+                            <ul class="deliverables-list">
+                                <li>Structured challenge session with experienced pharma consultants</li>
+                                <li>Pre-read materials and executive briefing deck</li>
+                                <li>Issue log with recommended responses and mitigations</li>
+                                <li>Coaching for leadership presentation and Q&A</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Launch Excellence & COE Content -->
+            <div class="role-content" id="role-1">
+                <div class="role-header">
+                    <h3>For Launch Excellence & COE Leaders</h3>
+                    <div class="tagline">Standardize, institutionalize, and modernize launch excellence</div>
+                    <p>You're responsible for launch capability across the organization—ensuring every brand team has the frameworks, tools, and discipline to launch well. We help you build the infrastructure that scales.</p>
+                </div>
+
+                <div class="offerings-grid">
+                    <div class="offering-card featured">
+                        <div class="offering-header">
+                            <div class="offering-number">1</div>
+                            <h4>Launch Maturity Diagnostic</h4>
+                            <div class="subtitle">Know your organizational capability</div>
+                        </div>
+                        <div class="offering-body">
+                            <p>A comprehensive assessment of your organization's launch excellence maturity—not just one brand, but across your portfolio. We evaluate governance, capabilities, tools, and execution discipline to identify where you're strong and where you're exposed.</p>
+                            <div class="deliverables-label">What You Get</div>
+                            <ul class="deliverables-list">
+                                <li>Enterprise-wide maturity scorecard across key dimensions</li>
+                                <li>Benchmark comparison to industry standards</li>
+                                <li>Capability gap analysis with prioritization framework</li>
+                                <li>Investment roadmap for capability building</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="journey-arrow">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        <span>Design the operating model</span>
+                    </div>
+
+                    <div class="offering-card">
+                        <div class="offering-header">
+                            <div class="offering-number">2</div>
+                            <h4>Operating Model Design</h4>
+                            <div class="subtitle">How your launch machine should work</div>
+                        </div>
+                        <div class="offering-body">
+                            <p>We design the operating model that brings discipline to launch excellence—governance structures, stage gates, roles and responsibilities, and the integration points with brand planning, finance, and portfolio management.</p>
+                            <div class="deliverables-label">What You Get</div>
+                            <ul class="deliverables-list">
+                                <li>Launch governance framework with clear stage gates</li>
+                                <li>Roles & responsibilities matrix (COE ↔ Brand ↔ Functions)</li>
+                                <li>Brand partnership model and engagement protocols</li>
+                                <li>Integration design with planning cycles and financial processes</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="journey-arrow">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        <span>Equip your teams</span>
+                    </div>
+
+                    <div class="offering-card">
+                        <div class="offering-header">
+                            <div class="offering-number">3</div>
+                            <h4>COE Toolkit & Enablement</h4>
+                            <div class="subtitle">The infrastructure to scale excellence</div>
+                        </div>
+                        <div class="offering-body">
+                            <p>We build the toolkit your COE needs to support brand teams consistently—templates, best practices, training materials, and the knowledge base that captures learnings across launches.</p>
+                            <div class="deliverables-label">What You Get</div>
+                            <ul class="deliverables-list">
+                                <li>100+ launch deliverable templates by function and stage</li>
+                                <li>Gold standard examples and best practice library</li>
+                                <li>Training curriculum for launch team onboarding</li>
+                                <li>Lessons learned framework and knowledge management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Executive Leadership Content -->
+            <div class="role-content" id="role-2">
+                <div class="role-header">
+                    <h3>For Executive Leadership</h3>
+                    <div class="tagline">De-risk launch performance and create enterprise control</div>
+                    <p>You need confidence that your major launches are on track—without drowning in operational detail. We provide the strategic visibility and challenge function that helps you make better decisions and hold teams accountable.</p>
+                </div>
+
+                <div class="offerings-grid">
+                    <div class="offering-card featured">
+                        <div class="offering-header">
+                            <div class="offering-number">1</div>
+                            <h4>Executive Launch Briefing</h4>
+                            <div class="subtitle">Strategic clarity in 15 minutes</div>
+                        </div>
+                        <div class="offering-body">
+                            <p>A concise, objective answer to your most important question: "How ready are we for launch?" We synthesize complex launch status into executive-ready insights—readiness scores, key risks, and the decisions that need your attention.</p>
+                            <div class="deliverables-label">What You Get</div>
+                            <ul class="deliverables-list">
+                                <li>One-page readiness summary with objective scoring</li>
+                                <li>Top risks and mitigations requiring executive attention</li>
+                                <li>Comparison to expected readiness for launch timing</li>
+                                <li>Clear ask list from brand teams</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="journey-arrow">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        <span>Enterprise-level view</span>
+                    </div>
+
+                    <div class="offering-card">
+                        <div class="offering-header">
+                            <div class="offering-number">2</div>
+                            <h4>Portfolio Launch Maturity</h4>
+                            <div class="subtitle">Visibility across all launches</div>
+                        </div>
+                        <div class="offering-body">
+                            <p>An enterprise-level view of launch excellence maturity across your portfolio. We translate capability assessments into strategic implications—where you're strong, where you're exposed, and what that means for P&L risk.</p>
+                            <div class="deliverables-label">What You Get</div>
+                            <ul class="deliverables-list">
+                                <li>Portfolio dashboard across all active and planned launches</li>
+                                <li>Maturity scores linked to revenue risk and strategic options</li>
+                                <li>Investment recommendations for capability building</li>
+                                <li>Consistent metrics across franchises and geographies</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="journey-arrow">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        <span>Challenge what matters</span>
+                    </div>
+
+                    <div class="offering-card">
+                        <div class="offering-header">
+                            <div class="offering-number">3</div>
+                            <h4>Executive Pressure Test</h4>
+                            <div class="subtitle">Board-level challenge for critical launches</div>
+                        </div>
+                        <div class="offering-body">
+                            <p>A concentrated challenge session for your most important launches—pressure-testing assumptions the way your board, payers, and competitors will. Ensures your biggest launches have been properly challenged before major investment decisions.</p>
+                            <div class="deliverables-label">What You Get</div>
+                            <ul class="deliverables-list">
+                                <li>Scenario-based challenge mirroring board and payer perspectives</li>
+                                <li>Pre-read built from launch team materials</li>
+                                <li>Immediate action commitments with owners</li>
+                                <li>Optional follow-up to track execution</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-we-work">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">How We Work</span>
+                <h2>Consulting + Platform, <span class="gold-highlight">Powered by Clariem IP</span></h2>
+                <p class="section-description">Every engagement combines senior consulting expertise with the Launch Copilot platform—giving you both strategic thinking and the infrastructure to sustain excellence.</p>
+            </div>
+
+            <div class="work-grid">
+                <div class="work-card">
+                    <div class="work-icon">🧭</div>
+                    <h4>Guide</h4>
+                    <p>We coach your teams through the framework—what to do, when, and why it matters at each stage of your launch.</p>
+                </div>
+                <div class="work-card">
+                    <div class="work-icon">🛠️</div>
+                    <h4>Build</h4>
+                    <p>We create high-quality deliverables using proven templates and AI acceleration—faster than traditional consulting.</p>
+                </div>
+                <div class="work-card">
+                    <div class="work-icon">🔍</div>
+                    <h4>Review</h4>
+                    <p>We assess readiness objectively, benchmark against best practices, and identify gaps before they become problems.</p>
+                </div>
+                <div class="work-card">
+                    <div class="work-icon">⚡</div>
+                    <h4>Orchestrate</h4>
+                    <p>We align cross-functional teams, manage dependencies, and ensure leadership has the visibility they need.</p>
+                </div>
+            </div>
+
+            <div class="consulting-callout">
+                <div class="callout-icon">🤝</div>
+                <div class="callout-content">
+                    <h3>Consulting Services, Not Software</h3>
+                    <p>We deliver outcomes, not licenses. Clariem consultants work alongside your teams using the Launch Copilot platform—and your team members have the option to use the platform directly as we work together. You get the benefit of AI-accelerated delivery without a software implementation project.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Start With What Matters Most</h2>
+            <p>Whether you need an objective readiness assessment, a maturity diagnostic, or executive-level visibility—we'll design the right engagement for where you are today.</p>
+            <div class="cta-buttons">
+                <a href="tillDec%2007/3-request-demo.html" class="btn btn-primary">
+                    Let's Talk
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                </a>
+                <a href="tillDec%2007/2-how-it-works.html" class="btn btn-secondary">Explore the Platform</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">
+                    <img src="25_11_13__LC_logo-footer.jpg" alt="Launch Copilot">
+                </div>
+                <div class="footer-tagline">A Clariem Product</div>
+                <p class="footer-description">AI-powered pharmaceutical launch excellence platform transforming how biopharma organizations orchestrate complex product launches.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Why Launch Copilot</a></li>
+                    <li><a href="tillDec%2007/2-how-it-works.html">How It Works</a></li>
+                    <li><a href="4-offerings.html">Consulting Services</a></li>
+                    <li><a href="tillDec%2007/3-request-demo.html">Request Demo</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Clariem Suite</h4>
+                <ul class="footer-links">
+                    <li><a href="http://www.transformcopilot.ai">Transform Copilot</a></li>
+                    <li><a href="http://www.clariem.com">About Clariem</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 Clariem Inc. All rights reserved.</div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('nav > ul');
+            
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('mobile-menu-open');
+                });
+                
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('nav')) {
+                        navMenu.classList.remove('mobile-menu-open');
+                    }
+                });
+                
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('mobile-menu-open');
+                    });
+                });
+            }
+        });
+
+        // Role tab switching
+        function showRole(index) {
+            // Update tabs
+            document.querySelectorAll('.role-tab').forEach((tab, i) => {
+                tab.classList.toggle('active', i === index);
+            });
+            
+            // Update content
+            document.querySelectorAll('.role-content').forEach((content, i) => {
+                content.classList.toggle('active', i === index);
+            });
+        }
+    </script>
+</body>
+</html>

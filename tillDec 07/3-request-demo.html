@@ -17,14 +17,17 @@
         body {font-family: 'Inter', sans-serif; line-height: 1.7; color: var(--text-primary); background: var(--white); scroll-behavior: smooth;}
         
         /* Header */
-        header {background: var(--white); padding: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--sky-pale);}
+        header {background: var(--white); padding: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 3px solid transparent; border-image: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%) 1;}
         nav {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: flex; justify-content: space-between; align-items: center;}
         .logo {font-size: 1.5rem; font-weight: 700; color: var(--navy-dark); display: flex; align-items: center; gap: 0.7rem; text-decoration: none;}
-        .logo img {height: 45px; width: auto;}
+        .logo img {height: 55px; width: auto;}
         nav ul {list-style: none; display: flex; gap: 2.5rem;}
         nav a {color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; position: relative; font-size: 0.95rem;}
         nav a:hover {color: var(--sky-blue);}
-        nav a.active {color: var(--navy); font-weight: 600;}
+        nav a.active {color: var(--navy); font-weight: 700;}
+        
+        /* Mobile menu */
+        .mobile-menu-btn {display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--navy);}
         nav a.active::after {content: ''; position: absolute; bottom: -1.5rem; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--sky-blue) 0%, var(--gold) 100%);}
         
         /* Hero */
@@ -114,9 +117,11 @@
         }
 
         @media (max-width: 768px) {
+            .mobile-menu-btn {display: block;}
+            nav ul {position: fixed; top: 80px; right: -100%; width: 280px; height: calc(100vh - 80px); background: var(--white); flex-direction: column; padding: 2rem; box-shadow: -2px 0 10px rgba(0,0,0,0.1); transition: right 0.3s ease; gap: 1.5rem; align-items: flex-start;}
+            nav ul.mobile-menu-open {right: 0;}
             .hero h1 {font-size: 2.5rem;}
             .features-grid {grid-template-columns: 1fr;}
-            nav ul {flex-direction: column; gap: 1rem;}
             .footer-content {grid-template-columns: 1fr;}
         }
     </style>
@@ -124,11 +129,12 @@
 <body>
     <header>
         <nav>
-            <a href="25Nov22/index.html" class="logo">
-                <img src="25Nov22/25_11_13__LC_logo-Transp-old.png" alt="Launch Copilot">
+            <a href="index.html" class="logo">
+                <img src="25_11_13__LC_logo-Transp.png" alt="Launch Copilot">
             </a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
             <ul>
-                <li><a href="25Nov22/index.html">Why Launch Copilot</a></li>
+                <li><a href="index.html">Why Launch Copilot</a></li>
                 <li><a href="2-how-it-works.html">How It Works</a></li>
                 <li><a href="3-request-demo.html" class="active">Request Demo</a></li>
             </ul>
@@ -176,7 +182,8 @@
                         <div>
                             <h3>Email Us</h3>
                             <p>Have questions before scheduling?</p>
-                            <a href="mailto:info@clariem.com">info@clariem.com</a>
+                            <a href="/cdn-cgi/l/email-protection#3c55525a537c5f505d4e555951125f5351"><a href="mailto:info@clariem.com">info@clariem.com</a>
+</a>
                         </div>
                     </div>
 
@@ -330,9 +337,7 @@
                     <h3>What kind of training and support do you provide?</h3>
                     <div class="faq-toggle">+</div>
                 </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        <p>We provide comprehensive onboarding including role-specific training for launch leads, functional teams, and executives; detailed documentation and video tutorials; regular office hours with pharmaceutical launch experts; and dedicated customer success resources. Teams also gain access to our knowledge base of launch best practices, case studies from comparable products, and a community of launch professionals. Our goal is to make you self-sufficient quickly while providing expert support whenever needed.</p>
+                <div class="g including role-specific training for launch leads, functional teams, and executives; detailed documentation and video tutorials; regular office hours with pharmaceutical launch experts; and dedicated customer success resources. Teams also gain access to our knowledge base of launch best practices, case studies from comparable products, and a community of launch professionals. Our goal is to make you self-sufficient quickly while providing expert support whenever needed.</p>
                     </div>
                 </div>
             </div>
@@ -355,7 +360,7 @@
         <div class="footer-content">
             <div>
                 <div class="footer-logo">
-                    <img src="25Nov22/25_11_13__LC_logo-footer.jpg" alt="Launch Copilot">
+                    <img src="25_11_13__LC_logo-footer.jpg" alt="Launch Copilot">
                 </div>
                 <div class="footer-tagline">A Clariem Product</div>
                 <p class="footer-description">AI-powered pharmaceutical launch excellence platform transforming how biopharma organizations orchestrate complex product launches.</p>
@@ -363,16 +368,16 @@
             <div class="footer-section">
                 <h4>Platform</h4>
                 <ul class="footer-links">
-                    <li><a href="25Nov22/index.html">Why Launch Copilot</a></li>
+                    <li><a href="index.html">Why Launch Copilot</a></li>
                     <li><a href="2-how-it-works.html">How It Works</a></li>
                     <li><a href="3-request-demo.html">Request Demo</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Company</h4>
+                <h4>Clariem Suite</h4>
                 <ul class="footer-links">
+                    <li><a href="http://www.transformcopilot.ai">Transform Copilot</a></li>
                     <li><a href="http://www.clariem.com">About Clariem</a></li>
-                    <li><a href="3-request-demo.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -386,8 +391,51 @@
         <div class="footer-bottom">© 2025 Clariem Inc. All rights reserved.</div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('nav ul');
+            
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('mobile-menu-open');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('nav')) {
+                        navMenu.classList.remove('mobile-menu-open');
+                    }
+                });
+                
+                // Close menu when clicking a link
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('mobile-menu-open');
+                    });
+                });
+            }
+        });
+    </script>
+
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
         function toggleFAQ(element) {
             const faqItem = element.parentElement;
             const wasActive = faqItem.classList.contains('active');
-         
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -129,14 +129,13 @@
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo">
-                <img src="25_11_13__LC_logo-Transp.png" alt="Launch Copilot">
+            <a href="tillDec%2007/index.html" class="logo">
+                <img src="tillDec%2007/25_11_13__LC_logo-Transp.png" alt="Launch Copilot">
             </a>
             <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
             <ul>
-                <li><a href="index.html">Why Launch Copilot</a></li>
-                <li><a href="tillDec%2007/2-how-it-works.html">How It Works</a></li>
-                <li><a href="4-offerings.html">Consulting Services</a></li>
+                <li><a href="tillDec%2007/index.html">Why Launch Copilot</a></li>
+                <li><a href="2-how-it-works.html">How It Works</a></li>
                 <li><a href="3-request-demo.html" class="active">Request Demo</a></li>
             </ul>
         </nav>
@@ -183,7 +182,7 @@
                         <div>
                             <h3>Email Us</h3>
                             <p>Have questions before scheduling?</p>
-                            <a href="/cdn-cgi/l/email-protection#3c55525a537c5f505d4e555951125f5351"><a href="/cdn-cgi/l/email-protection#83eaede5ecc3e0efe2f1eae6eeade0ecee"><span class="__cf_email__" data-cfemail="8ae3e4ece5cae9e6ebf8e3efe7a4e9e5e7">[email&#160;protected]</span></a>
+                            <a href="/cdn-cgi/l/email-protection#3c55525a537c5f505d4e555951125f5351"><a href="mailto:info@clariem.com">info@clariem.com</a>
 </a>
                         </div>
                     </div>
@@ -361,7 +360,7 @@
         <div class="footer-content">
             <div>
                 <div class="footer-logo">
-                    <img src="25_11_13__LC_logo-footer.jpg" alt="Launch Copilot">
+                    <img src="tillDec%2007/25_11_13__LC_logo-footer.jpg" alt="Launch Copilot">
                 </div>
                 <div class="footer-tagline">A Clariem Product</div>
                 <p class="footer-description">AI-powered pharmaceutical launch excellence platform transforming how biopharma organizations orchestrate complex product launches.</p>
@@ -369,9 +368,8 @@
             <div class="footer-section">
                 <h4>Platform</h4>
                 <ul class="footer-links">
-                    <li><a href="index.html">Why Launch Copilot</a></li>
-                    <li><a href="tillDec%2007/2-how-it-works.html">How It Works</a></li>
-                    <li><a href="4-offerings.html">Consulting Services</a></li>
+                    <li><a href="tillDec%2007/index.html">Why Launch Copilot</a></li>
+                    <li><a href="2-how-it-works.html">How It Works</a></li>
                     <li><a href="3-request-demo.html">Request Demo</a></li>
                 </ul>
             </div>
@@ -394,7 +392,7 @@
     </footer>
 
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -430,4 +428,14 @@
             
             // Close all FAQ items
             document.querySelectorAll('.faq-item').forEach(item => {
-                item.class
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
