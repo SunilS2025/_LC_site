@@ -183,7 +183,7 @@
                         <div>
                             <h3>Email Us</h3>
                             <p>Have questions before scheduling?</p>
-                            <a href="/cdn-cgi/l/email-protection#3c55525a537c5f505d4e555951125f5351"><a href="/cdn-cgi/l/email-protection#036a6d656c43606f62716a666e2d606c6e"><a href="mailto:yourname@yourdomain.com">yourname@yourdomain.com</a>
+                            <a href="/cdn-cgi/l/email-protection#3c55525a537c5f505d4e555951125f5351"><a href="/cdn-cgi/l/email-protection#036a6d656c43606f62716a666e2d606c6e"><a href="mailto:info@clariem.com">info@clariem.com</a>
 </a>
 </a>
                         </div>
@@ -339,7 +339,9 @@
                     <h3>What kind of training and support do you provide?</h3>
                     <div class="faq-toggle">+</div>
                 </div>
-                <div class="g including role-specific training for launch leads, functional teams, and executives; detailed documentation and video tutorials; regular office hours with pharmaceutical launch experts; and dedicated customer success resources. Teams also gain access to our knowledge base of launch best practices, case studies from comparable products, and a community of launch professionals. Our goal is to make you self-sufficient quickly while providing expert support whenever needed.</p>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We provide comprehensive onboarding including role-specific training for launch leads, functional teams, and executives; detailed documentation and video tutorials; regular office hours with pharmaceutical launch experts; and dedicated customer success resources. Teams also gain access to our knowledge base of launch best practices, case studies from comparable products, and a community of launch professionals. Our goal is to make you self-sufficient quickly while providing expert support whenever needed.</p>
                     </div>
                 </div>
             </div>
@@ -431,4 +433,14 @@
             
             // Close all FAQ items
             document.querySelectorAll('.faq-item').forEach(item => {
-                item.class
+                item.classList.remove('active');
+            });
+            
+            // If this item wasn't active, open it
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
