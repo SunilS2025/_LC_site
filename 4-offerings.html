@@ -37,6 +37,84 @@
         .hero h1 {font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800; color: var(--navy-dark); letter-spacing: -0.03em; line-height: 1.15;}
         .hero h1 .highlight {background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
         .hero-subtitle {font-size: 1.5rem; color: var(--text-secondary); max-width: 900px; line-height: 1.6; margin-bottom: 2rem;}
+
+        /* Client Logo Carousel */
+        .client-logos-section {
+            background: var(--white);
+            padding: 3.5rem 0 4rem;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+        .client-logos-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .client-logos-header p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+        .logo-carousel-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        .logo-carousel-wrapper::before,
+        .logo-carousel-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 120px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .logo-carousel-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--white) 0%, transparent 100%);
+        }
+        .logo-carousel-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--white) 0%, transparent 100%);
+        }
+        .logo-carousel {
+            display: flex;
+            gap: 4rem;
+            animation: scroll-logos 30s linear infinite;
+            width: max-content;
+        }
+        .logo-carousel:hover {
+            animation-play-state: paused;
+        }
+        @keyframes scroll-logos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .client-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 55px;
+            min-width: 140px;
+            padding: 0 1rem;
+            flex-shrink: 0;
+            filter: grayscale(100%);
+            opacity: 0.65;
+            transition: all 0.4s ease;
+        }
+        .client-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        .client-logo img {
+            max-height: 45px;
+            max-width: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
         
         /* Containers and Sections */
         .container {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem;}
@@ -165,6 +243,10 @@
             .anchor-question {padding: 2rem;}
             .anchor-question h3 {font-size: 1.6rem;}
             .footer-content {grid-template-columns: 1fr;}
+            .client-logos-section {padding: 2.5rem 0 3rem;}
+            .logo-carousel {gap: 2.5rem;}
+            .client-logo {min-width: 100px;}
+            .client-logo img {max-height: 35px; max-width: 120px;}
         }
     </style>
 </head>
@@ -189,6 +271,18 @@
             <div class="hero-label">Consulting Services</div>
             <h1>Launch Excellence, <span class="highlight">Delivered</span></h1>
             <p class="hero-subtitle">Strategic consulting powered by Launch Copilot—helping pharmaceutical teams prepare, execute, and excel through every stage of the launch journey.</p>
+        </div>
+    </section>
+
+    <!-- Client Logos Carousel - Dynamically loaded from credentials/credentials.json -->
+    <section class="client-logos-section">
+        <div class="client-logos-header">
+            <p>Our Consultants Have Served</p>
+        </div>
+        <div class="logo-carousel-wrapper">
+            <div class="logo-carousel" id="logoCarousel">
+                <!-- Logos loaded dynamically from credentials/credentials.json -->
+            </div>
         </div>
     </section>
 
@@ -553,8 +647,38 @@
     </footer>
 
     <script>
+        // Load client logos from credentials.json
+        async function loadClientLogos() {
+            try {
+                const response = await fetch('credentials/credentials.json');
+                const logos = await response.json();
+                const carousel = document.getElementById('logoCarousel');
+                
+                if (logos.length === 0) {
+                    document.querySelector('.client-logos-section').style.display = 'none';
+                    return;
+                }
+                
+                // Create logo elements (duplicated for seamless loop)
+                const createLogoElements = () => {
+                    return logos.map(logo => 
+                        `<div class="client-logo"><img src="credentials/${logo.file}" alt="${logo.alt}"></div>`
+                    ).join('');
+                };
+                
+                // Add two sets for seamless infinite scroll
+                carousel.innerHTML = createLogoElements() + createLogoElements();
+            } catch (error) {
+                console.warn('Could not load client logos:', error);
+                document.querySelector('.client-logos-section').style.display = 'none';
+            }
+        }
+        
         // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Load client logos
+            loadClientLogos();
+            
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navMenu = document.querySelector('nav > ul');
             
